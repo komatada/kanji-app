@@ -85,3 +85,23 @@ export function generateQuizQuestions(data: KanjiEntry[], count: number = 10): Q
         };
     });
 }
+
+export function regenerateQuestion(question: QuizQuestion, data: KanjiEntry[]): QuizQuestion {
+    // Collect all readings for distractor generation
+    const allReadings = new Set<string>();
+    data.forEach(entry => {
+        entry.readings.forEach(reading => allReadings.add(reading.reading));
+    });
+    const readingList = Array.from(allReadings);
+
+    // Generate new smart distractors
+    const distractors = getSmartDistractors(question.reading, readingList, 3);
+
+    // Create new choice set
+    const choices = [...distractors, question.reading].sort(() => 0.5 - Math.random());
+
+    return {
+        ...question,
+        choices
+    };
+}
