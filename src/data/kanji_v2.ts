@@ -1713,5 +1713,14 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
             { type: "on", reading: "だん", sentence: "階[段]を下りる。" },
             { type: "on", reading: "だん", sentence: "手[段]を選ぶ。" }
         ]
+    },
+    {
+        id: "192",
+        character: "起",
+        readings: [
+            { type: "kun", reading: "お", sentence: "早寝早[起]き。" },
+            { type: "kun", reading: "お", sentence: "朝六時に[起]きる。" },
+            { type: "on", reading: "き", sentence: "床から[起]床する。" }
+        ]
     }
 ];
