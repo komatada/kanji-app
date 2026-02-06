@@ -1394,7 +1394,7 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
         id: "156",
         character: "部",
         readings: [
-            { type: "on", reading: "ぶ", sentence: "[部]屋を掃除する。" },
+            { type: "on", reading: "へ", sentence: "[部]屋を掃除する。" },
             { type: "on", reading: "ぶ", sentence: "野球[部]に入る。" }
         ]
     },
