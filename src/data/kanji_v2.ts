@@ -166,7 +166,8 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
             { type: "kun", reading: "や", sentence: "八百[屋]で会う。" },
             { type: "kun", reading: "や", sentence: "花[屋]で花を買う。" },
             { type: "on", reading: "おく", sentence: "[屋]上に行く。" },
-            { type: "on", reading: "おく", sentence: "家[屋]を建てる。" }
+            { type: "on", reading: "おく", sentence: "家[屋]を建てる。" },
+            { type: "kun", reading: "や", sentence: "八百[屋]へ行く。" } // Special reading 'Ya'
         ]
     },
     {
@@ -502,7 +503,8 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
         readings: [
             { type: "kun", reading: "む", sentence: "[向]こう側へ行く。" },
             { type: "kun", reading: "む", sentence: "北を[向]く。" },
-            { type: "on", reading: "こう", sentence: "方[向]を決める。" }
+            { type: "on", reading: "こう", sentence: "方[向]を決める。" },
+            { type: "kun", reading: "なた", sentence: "日[向]ぼっこ。" } // Special 'nata' (Hinata)
         ]
     },
     {
@@ -561,7 +563,8 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
         readings: [
             { type: "kun", reading: "こと", sentence: "大切な[事]を決める。" },
             { type: "on", reading: "じ", sentence: "[事]件が解決する。" },
-            { type: "on", reading: "じ", sentence: "家[事]を手伝う。" }
+            { type: "on", reading: "じ", sentence: "家[事]を手伝う。" },
+            { type: "on", reading: "ごと", sentence: "仕[事]に行く。" } // Special 'goto'
         ]
     },
     {
@@ -839,6 +842,8 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
         character: "真",
         readings: [
             { type: "kun", reading: "ま", sentence: "[真]っ赤なトマト。" },
+            { type: "kun", reading: "ま", sentence: "[真]っ青な空。" },
+            { type: "kun", reading: "ま", sentence: "[真]ん中。" },
             { type: "on", reading: "しん", sentence: "[真]実を話す。" }
         ]
     },
@@ -1739,6 +1744,42 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
             { type: "kun", reading: "くすり", sentence: "[薬]を飲む。" },
             { type: "on", reading: "やく", sentence: "農[薬]を使う。" },
             { type: "on", reading: "やっ", sentence: "[薬]局へ行く。" }
+        ]
+    },
+    {
+        id: "195",
+        character: "豆",
+        readings: [
+            { type: "kun", reading: "まめ", sentence: "[豆]まきをする。" },
+            { type: "on", reading: "とう", sentence: "納[豆]を食べる。" },
+            { type: "kun", reading: "ず", sentence: "小[豆]（あずき）。" }
+        ]
+    },
+    {
+        id: "196",
+        character: "度",
+        readings: [
+            { type: "on", reading: "ど", sentence: "温[度]を測る。" },
+            { type: "on", reading: "ど", sentence: "丁[度]よい。" },
+            { type: "on", reading: "たく", sentence: "支[度]をする。" }
+        ]
+    },
+    {
+        id: "197",
+        character: "息",
+        readings: [
+            { type: "kun", reading: "いき", sentence: "ため[息]をつく。" },
+            { type: "on", reading: "そく", sentence: "休[息]をとる。" },
+            { type: "on", reading: "むす", sentence: "[息]子と遊ぶ。" }
+        ]
+    },
+    {
+        id: "198",
+        character: "丁",
+        readings: [
+            { type: "on", reading: "ちょう", sentence: "[丁]寧に書く。" },
+            { type: "on", reading: "ちょう", sentence: "包[丁]を使う。" },
+            { type: "on", reading: "ちょう", sentence: "[丁]度（ちょうど）" }
         ]
     }
 ];
