@@ -63,12 +63,21 @@ export function useQuiz() {
     }, [questions, currentQuestionIndex]);
 
     const nextQuestion = useCallback(() => {
-        if (currentQuestionIndex < questions.length - 1) {
-            setCurrentQuestionIndex((prev) => prev + 1);
-        } else {
-            setGameState("RESULT");
+        // Endless Mode: Check if we need to generate more questions
+        // If we make it to the last few questions, generate more!
+        const remaining = questions.length - 1 - currentQuestionIndex;
+        if (remaining < 3) {
+            const moreQuestions = generateQuizQuestions(KANJI_DATA_V2, 10);
+            setQuestions(prev => [...prev, ...moreQuestions]);
         }
+
+        setCurrentQuestionIndex((prev) => prev + 1);
+        // Never setGameState("RESULT") automatically in endless mode
     }, [currentQuestionIndex, questions.length]);
+
+    const endGame = useCallback(() => {
+        setGameState("RESULT");
+    }, []);
 
     const currentQuestion = questions[currentQuestionIndex];
 
@@ -82,5 +91,6 @@ export function useQuiz() {
         startGame,
         answerQuestion,
         nextQuestion,
+        endGame, // New function to manually finish the game
     };
 }

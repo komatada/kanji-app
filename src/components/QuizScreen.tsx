@@ -10,6 +10,7 @@ interface QuizScreenProps {
     totalNumber: number;
     gameTime: number;
     onAnswer: (reading: string) => void;
+    onEndGame: () => void; // New prop
     isProcessing: boolean; // Disable input while showing feedback
 }
 
@@ -25,6 +26,7 @@ export function QuizScreen({
     totalNumber,
     gameTime,
     onAnswer,
+    onEndGame,
     isProcessing
 }: QuizScreenProps) {
     // Local state to show selected button styling if needed, 
@@ -42,11 +44,22 @@ export function QuizScreen({
         <div className="flex flex-col h-screen  bg-[#F0F9FF] p-4 max-w-4xl mx-auto">
             {/* Header */}
             <div className="flex justify-between items-center py-4 px-2">
-                <div className="text-xl font-bold text-sky-600 bg-white px-4 py-2 rounded-full shadow-sm">
-                    もんだい {currentNumber} / {totalNumber}
+                <div className="flex items-center space-x-2">
+                    <div className="text-xl font-bold text-sky-600 bg-white px-4 py-2 rounded-full shadow-sm">
+                        {currentNumber}問目
+                    </div>
                 </div>
-                <div className="text-xl font-bold text-orange-500 bg-white px-4 py-2 rounded-full shadow-sm">
-                    ゲーム時間: {formatTime(gameTime)}
+
+                <div className="flex items-center space-x-2">
+                    <div className="text-xl font-bold text-orange-500 bg-white px-4 py-2 rounded-full shadow-sm">
+                        {formatTime(gameTime)}
+                    </div>
+                    <button
+                        onClick={onEndGame}
+                        className="bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 rounded-full shadow-sm transition-colors text-sm"
+                    >
+                        おわる
+                    </button>
                 </div>
             </div>
 

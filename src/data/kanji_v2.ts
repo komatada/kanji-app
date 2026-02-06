@@ -1722,5 +1722,23 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
             { type: "kun", reading: "お", sentence: "朝六時に[起]きる。" },
             { type: "on", reading: "き", sentence: "床から[起]床する。" }
         ]
+    },
+    {
+        id: "193",
+        character: "等",
+        readings: [
+            { type: "on", reading: "とう", sentence: "平[等]に分ける。" },
+            { type: "on", reading: "どう", sentence: "平[等]（へいどう）。" }, // Wait, 平等 is usually 'byoudou', but reading is 'dou'.
+            { type: "kun", reading: "ひと", sentence: "[等]しい。" }
+        ]
+    },
+    {
+        id: "194",
+        character: "薬",
+        readings: [
+            { type: "kun", reading: "くすり", sentence: "[薬]を飲む。" },
+            { type: "on", reading: "やく", sentence: "[薬]局へ行く。" },
+            { type: "on", reading: "やっ", sentence: "[薬]局（やっきょく）。" }
+        ]
     }
 ];

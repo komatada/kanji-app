@@ -18,6 +18,7 @@ export default function Home() {
     startGame,
     answerQuestion,
     nextQuestion,
+    endGame,
   } = useQuiz();
 
   const { playCorrect, playIncorrect, playClick } = useGameSound();
@@ -83,6 +84,7 @@ export default function Home() {
           totalNumber={totalQuestions}
           gameTime={gameTime}
           onAnswer={handleAnswer}
+          onEndGame={endGame}
           isProcessing={feedbackState.show}
         />
       )}
