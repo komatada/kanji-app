@@ -1727,9 +1727,9 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
         id: "193",
         character: "等",
         readings: [
-            { type: "on", reading: "とう", sentence: "平[等]に分ける。" },
-            { type: "on", reading: "どう", sentence: "平[等]（へいどう）。" }, // Wait, 平等 is usually 'byoudou', but reading is 'dou'.
-            { type: "kun", reading: "ひと", sentence: "[等]しい。" }
+            { type: "on", reading: "とう", sentence: "一[等]賞を取る。" },
+            { type: "on", reading: "どう", sentence: "平[等]に分ける。" },
+            { type: "kun", reading: "ひと", sentence: "悪人と[等]しい。" }
         ]
     },
     {
@@ -1737,8 +1737,8 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
         character: "薬",
         readings: [
             { type: "kun", reading: "くすり", sentence: "[薬]を飲む。" },
-            { type: "on", reading: "やく", sentence: "[薬]局へ行く。" },
-            { type: "on", reading: "やっ", sentence: "[薬]局（やっきょく）。" }
+            { type: "on", reading: "やく", sentence: "農[薬]を使う。" },
+            { type: "on", reading: "やっ", sentence: "[薬]局へ行く。" }
         ]
     }
 ];
