@@ -2,8 +2,9 @@
 
 import { useQuiz } from "@/hooks/useQuiz";
 import { useGameSound } from "@/hooks/useGameSound";
-import { StartScreen } from "@/components/StartScreen";
+import { StartScreen, GameMode } from "@/components/StartScreen";
 import { QuizScreen } from "@/components/QuizScreen";
+import { WritingScreen } from "@/components/WritingScreen";
 import { ResultScreen } from "@/components/ResultScreen";
 import { Feedback } from "@/components/Feedback";
 import { useState, useEffect } from "react";
@@ -25,13 +26,16 @@ export default function Home() {
 
   const { playCorrect, playIncorrect, playClick } = useGameSound();
 
+  const [gameMode, setGameMode] = useState<GameMode>("READING");
+
   const [feedbackState, setFeedbackState] = useState<{
     show: boolean;
     isCorrect: boolean | null;
   }>({ show: false, isCorrect: null });
 
-  const handleStart = () => {
+  const handleStart = (mode: GameMode) => {
     playClick();
+    setGameMode(mode);
     startGame();
   };
 
@@ -95,6 +99,11 @@ export default function Home() {
     }
   };
 
+  const handleNextWriting = () => {
+    playClick();
+    nextQuestion();
+  };
+
   useEffect(() => {
     // Prevent scrolling on iPad
     document.body.style.overflow = 'hidden';
@@ -105,13 +114,13 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#F0F9FF] select-none overflow-hidden touch-none">
-      <Feedback isCorrect={feedbackState.isCorrect} />
+      {gameMode === "READING" && <Feedback isCorrect={feedbackState.isCorrect} />}
 
       {gameState === "START" && (
         <StartScreen onStart={handleStart} />
       )}
 
-      {gameState === "PLAYING" && currentQuestion && (
+      {gameState === "PLAYING" && currentQuestion && gameMode === "READING" && (
         <QuizScreen
           question={currentQuestion}
           currentNumber={currentQuestionIndex + 1}
@@ -122,6 +131,16 @@ export default function Home() {
 
           isProcessing={feedbackState.show}
           onReport={handleReport}
+        />
+      )}
+
+      {gameState === "PLAYING" && currentQuestion && gameMode === "WRITING" && (
+        <WritingScreen
+          question={currentQuestion}
+          currentNumber={currentQuestionIndex + 1}
+          gameTime={gameTime}
+          onNext={handleNextWriting}
+          onEndGame={endGame}
         />
       )}
 
@@ -136,3 +155,4 @@ export default function Home() {
     </main>
   );
 }
+
