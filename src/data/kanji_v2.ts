@@ -1516,7 +1516,8 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
         character: "由",
         readings: [
             { type: "on", reading: "ゆう", sentence: "自[由]研究。" },
-            { type: "on", reading: "ゆう", sentence: "理[由]を話す。" }
+            { type: "on", reading: "ゆう", sentence: "理[由]を話す。" },
+            { type: "on", reading: "ゆい", sentence: "[由]緒ある家柄。" }
         ]
     },
     {
