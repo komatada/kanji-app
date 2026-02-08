@@ -188,7 +188,7 @@ export function WritingScreen({
                     />
                     {showAnswer && (
                         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                            <span className="text-[120px] text-red-400 font-bold opacity-70">
+                            <span className="text-[200px] text-red-400 font-bold opacity-70 leading-none">
                                 {getTargetKanji()}
                             </span>
                         </div>
@@ -206,8 +206,8 @@ export function WritingScreen({
                     <button
                         onClick={handleToggleAnswer}
                         className={`flex-1 py-4 text-white text-xl font-bold rounded-2xl shadow-md transition-colors ${showAnswer
-                                ? "bg-yellow-500 hover:bg-yellow-600"
-                                : "bg-green-500 hover:bg-green-600"
+                            ? "bg-yellow-500 hover:bg-yellow-600"
+                            : "bg-green-500 hover:bg-green-600"
                             }`}
                     >
                         {showAnswer ? "かくす" : "こたえ"}
