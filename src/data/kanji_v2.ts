@@ -638,7 +638,7 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
         readings: [
             { type: "kun", reading: "まも", sentence: "約束を[守]る。" },
             { type: "kun", reading: "もり", sentence: "子[守]りをする。" },
-            { type: "on", reading: "しゅ", sentence: "留[守]番をする。" },
+            { type: "on", reading: "す", sentence: "留[守]番をする。" },
             { type: "on", reading: "す", sentence: "留[守]にする。" } // Rusu uses 'su'.
         ]
     },
