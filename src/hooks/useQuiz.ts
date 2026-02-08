@@ -31,7 +31,7 @@ export function useQuiz() {
         const isCorrect = selectedReading === currentQuestion.reading;
 
         if (isCorrect) {
-            setGameTime((prev) => prev + 30);
+            setGameTime((prev) => prev + 20);
         } else {
             setGameTime((prev) => Math.max(0, prev - 30));
 
