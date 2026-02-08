@@ -12,6 +12,7 @@ interface QuizScreenProps {
     onAnswer: (reading: string) => void;
     onEndGame: () => void; // New prop
     isProcessing: boolean; // Disable input while showing feedback
+    onReport: () => void;
 }
 
 function formatTime(seconds: number) {
@@ -27,7 +28,8 @@ export function QuizScreen({
     gameTime,
     onAnswer,
     onEndGame,
-    isProcessing
+    isProcessing,
+    onReport
 }: QuizScreenProps) {
     // Local state to show selected button styling if needed, 
     // but for simple quiz, we might just trigger onAnswer immediately.
@@ -50,18 +52,23 @@ export function QuizScreen({
                     </div>
                 </div>
 
-                <div className="flex items-center space-x-2">
-                    <div className="text-xl font-bold text-orange-500 bg-white px-4 py-2 rounded-full shadow-sm">
-                        {formatTime(gameTime)}
-                    </div>
-                    <button
-                        onClick={onEndGame}
-                        className="bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 rounded-full shadow-sm transition-colors text-sm"
-                    >
-                        おわる
-                    </button>
+                <div className="text-xl font-bold text-orange-500 bg-white px-4 py-2 rounded-full shadow-sm">
+                    {formatTime(gameTime)}
                 </div>
+                <button
+                    onClick={onReport}
+                    className="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-full shadow-sm transition-colors text-sm"
+                >
+                    間違いを報告
+                </button>
+                <button
+                    onClick={onEndGame}
+                    className="bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 rounded-full shadow-sm transition-colors text-sm"
+                >
+                    おわる
+                </button>
             </div>
+
 
             {/* Question Area */}
             <div className="flex-1 flex flex-col items-center justify-center space-y-8 w-full">

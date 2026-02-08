@@ -225,7 +225,8 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
         character: "階",
         readings: [
             { type: "on", reading: "かい", sentence: "二[階]に上がる。" },
-            { type: "on", reading: "かい", sentence: "階[段]を上る。" } // "Kai"dan but kanji for dan is diff. Wait, 階段 is Kai-dan. 
+            { type: "on", reading: "かい", sentence: "[階]段を上る。" },
+            { type: "on", reading: "がい", sentence: "三[階]の教室。" }
         ]
     },
     {
@@ -259,7 +260,7 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
         character: "館",
         readings: [
             { type: "on", reading: "かん", sentence: "図書[館]に行く。" },
-            { type: "on", reading: "かん", sentence: "体[育]館で遊ぶ。" },
+            { type: "on", reading: "かん", sentence: "体育[館]で遊ぶ。" },
             { type: "on", reading: "かん", sentence: "映画[館]で見る。" }
         ]
     },
@@ -279,7 +280,7 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
             { type: "kun", reading: "お", sentence: "朝早く[起]きる。" },
             { type: "kun", reading: "お", sentence: "事件が[起]きる。" },
             { type: "on", reading: "き", sentence: "[起]立、礼。" },
-            { type: "on", reading: "き", sentence: "早寝早[起]き。" } // Wait, reading is still o-ki. On is 'ki'. 
+            { type: "kun", reading: "お", sentence: "早寝早[起]き。" }
         ]
     },
     {
@@ -356,7 +357,7 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
         character: "橋",
         readings: [
             { type: "kun", reading: "はし", sentence: "[橋]を渡る。" },
-            { type: "kun", reading: "はし", sentence: "石[橋]をたたく。" },
+            { type: "kun", reading: "ばし", sentence: "石[橋]をたたく。" },
             { type: "on", reading: "きょう", sentence: "歩道[橋]を歩く。" }
         ]
     },
@@ -409,7 +410,7 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
             { type: "kun", reading: "くる", sentence: "[苦]しい練習。" },
             { type: "kun", reading: "にが", sentence: "良薬は口に[苦]し。" },
             { type: "on", reading: "く", sentence: "[苦]労をかける。" },
-            { type: "on", reading: "く", sentence: "苦[手]な食べ物。" } // Wait, 苦手 is 'niga-te'.
+            { type: "kun", reading: "にが", sentence: "[苦]手な食べ物。" }
             // Removed On reading 'ku' for niga-te. Kept 'ku' for 'kurou'.
         ]
     },
@@ -434,7 +435,7 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
         id: "46",
         character: "係",
         readings: [
-            { type: "kun", reading: "かかり", sentence: "生き物[係]になる。" },
+            { type: "kun", reading: "がかり", sentence: "生き物[係]になる。" },
             { type: "on", reading: "けい", sentence: "関[係]がある。" }
         ]
     },
@@ -461,7 +462,7 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
         readings: [
             { type: "kun", reading: "き", sentence: "勝負が[決]まる。" },
             { type: "kun", reading: "き", sentence: "[決]めるのは君だ。" },
-            { type: "on", reading: "けっ", sentence: "[決]意を固める。" }, // Ketsu -> Kessin
+            { type: "on", reading: "けつ", sentence: "[決]意を固める。" },
             { type: "on", reading: "けつ", sentence: "判[決]が出る。" }
         ]
     },
@@ -1097,9 +1098,7 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
         character: "笛",
         readings: [
             { type: "kun", reading: "ふえ", sentence: "[笛]を吹く。" },
-            { type: "on", reading: "てき", sentence: "口[笛]を吹く。" } // Kuchibue is kunyomi compounded. Teki is 'kiteki' (汽笛).
-            // Correction:
-            // { type: "on", reading: "てき", sentence: "汽[笛]が鳴る。" }
+            { type: "on", reading: "ぶえ", sentence: "口[笛]を吹く。" }
         ]
     },
     {
@@ -1180,7 +1179,7 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
         readings: [
             { type: "kun", reading: "のぼ", sentence: "山に[登]る。" },
             { type: "on", reading: "と", sentence: "[登]山をする。" },
-            { type: "on", reading: "と", sentence: "[登]校する。" },
+            { type: "on", reading: "とう", sentence: "[登]校する。" },
             { type: "on", reading: "とう", sentence: "[登]場人物。" }
         ]
     },
@@ -1207,7 +1206,7 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
         character: "童",
         readings: [
             { type: "on", reading: "どう", sentence: "児[童]館。" },
-            { type: "on", reading: "どう", sentence: "[童]歌を歌う。" } // Warabe-uta often uses Kun, but Douwa uses Dou.
+            { type: "kun", reading: "わらべ", sentence: "[童]歌を歌う。" }
         ]
     },
     {
@@ -1223,7 +1222,7 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
         character: "波",
         readings: [
             { type: "kun", reading: "なみ", sentence: "[波]が高い。" },
-            { type: "on", reading: "は", sentence: "電[波]が悪い。" }
+            { type: "on", reading: "ぱ", sentence: "電[波]が悪い。" }
         ]
     },
     {
@@ -1273,12 +1272,10 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
         id: "142",
         character: "反",
         readings: [
-            { type: "kun", reading: "そ", sentence: "期待に[反]する。" }, // Hansuru uses han. Soru is the verb.
-            // Correction: "Soru" (反る)
+            { type: "on", reading: "はん", sentence: "期待に[反]する。" },
             { type: "kun", reading: "そ", sentence: "板が[反]る。" },
             { type: "on", reading: "はん", sentence: "[反]対する。" },
-            { type: "on", reading: "ほん", sentence: "謀[反]を起こす。" } // Rare but exists history. Maybe too hard.
-            // Keeping Han
+            { type: "on", reading: "ほん", sentence: "謀[反]を起こす。" }
         ]
     },
     {
@@ -1353,8 +1350,8 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
         readings: [
             { type: "kun", reading: "おもて", sentence: "家の[表]に出る。" },
             { type: "kun", reading: "あらわ", sentence: "気持ちを[表]す。" },
-            { type: "on", reading: "ひょう", sentence: "発[表]会。" },
-            { type: "on", reading: "ぴょう", sentence: "公[表]する。" } // Kuhyou? Kouhyou.
+            { type: "on", reading: "ぴょう", sentence: "発[表]会。" },
+            { type: "on", reading: "ひょう", sentence: "公[表]する。" }
         ]
     },
     {
@@ -1380,7 +1377,7 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
             { type: "kun", reading: "しな", sentence: "[品]物を運ぶ。" },
             { type: "on", reading: "ひん", sentence: "[品]がある人。" },
             { type: "on", reading: "ひん", sentence: "作[品]を作る。" },
-            { type: "on", reading: "ぴん", sentence: "食料[品]売り場。" } // correct? Yes, Syokuryouhin... wait, hin. Syokuryouhin. 
+            { type: "on", reading: "ひん", sentence: "食料[品]売り場。" } // correct? Yes, Syokuryouhin... wait, hin. Syokuryouhin. 
             // Tehin (Product) -> Hin. 
             // Is there a 'pin' reading? 
             // Ipphin (逸品). Sanpin (三品). Yes.
@@ -1392,7 +1389,7 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
         readings: [
             { type: "kun", reading: "ま", sentence: "試合に[負]ける。" },
             { type: "kun", reading: "お", sentence: "責任を[負]う。" },
-            { type: "on", reading: "ふ", sentence: "勝[負]がつかない。" }
+            { type: "on", reading: "ぶ", sentence: "勝[負]がつかない。" }
         ]
     },
     {
@@ -1485,9 +1482,7 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
             { type: "kun", reading: "おも", sentence: "[面]白い話。" },
             { type: "kun", reading: "つら", sentence: "[面]汚し。" },
             { type: "on", reading: "めん", sentence: "お[面]をかぶる。" },
-            { type: "on", reading: "めん", sentence: "真[面]目な人。" } // Majime -> 'Me' ? No 'Majime' is Ateji.
-            // Men: Gamen (画面), Menkai (面会).
-            // { type: "on", reading: "めん", sentence: "画[面]を見る。" }
+            { type: "on", reading: "じ", sentence: "真[面]目な人。" }
         ]
     },
     {
@@ -1505,7 +1500,7 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
         readings: [
             { type: "on", reading: "やく", sentence: "[役]に立つ。" },
             { type: "on", reading: "やく", sentence: "主[役]を演じる。" },
-            { type: "on", reading: "えき", sentence: "[役]所に行く。" } // Yakusho is yaku. 'Eki' -> 'Ekimu' (Service). Rare for 3rd grade.
+            { type: "on", reading: "やく", sentence: "[役]所に行く。" }
         ]
     },
     {
@@ -1513,7 +1508,7 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
         character: "薬",
         readings: [
             { type: "kun", reading: "くすり", sentence: "[薬]を飲む。" },
-            { type: "on", reading: "やく", sentence: "[薬]局へ行く。" }
+            { type: "on", reading: "やっ", sentence: "[薬]局へ行く。" }
         ]
     },
     {
@@ -1599,8 +1594,8 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
         id: "177",
         character: "葉",
         readings: [
-            { type: "kun", reading: "は", sentence: "落ち[葉]拾い。" },
-            { type: "on", reading: "よう", sentence: "紅[葉]がきれいだ。" } // Kouyou
+            { type: "kun", reading: "ば", sentence: "落ち[葉]拾い。" },
+            { type: "on", reading: "よう", sentence: "紅[葉]がきれいだ。" }
         ]
     },
     {
@@ -1703,14 +1698,7 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
             { type: "kun", reading: "なご", sentence: "[和]む。" }
         ]
     },
-    {
-        id: "190",
-        character: "階",
-        readings: [
-            { type: "on", reading: "かい", sentence: "[階]段を上る。" },
-            { type: "on", reading: "がい", sentence: "三[階]に住む。" }
-        ]
-    },
+
     {
         id: "191",
         character: "段",
@@ -1719,51 +1707,7 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
             { type: "on", reading: "だん", sentence: "手[段]を選ぶ。" }
         ]
     },
-    {
-        id: "192",
-        character: "起",
-        readings: [
-            { type: "kun", reading: "お", sentence: "早寝早[起]き。" },
-            { type: "kun", reading: "お", sentence: "朝六時に[起]きる。" },
-            { type: "on", reading: "き", sentence: "床から[起]床する。" }
-        ]
-    },
-    {
-        id: "193",
-        character: "等",
-        readings: [
-            { type: "on", reading: "とう", sentence: "一[等]賞を取る。" },
-            { type: "on", reading: "どう", sentence: "平[等]に分ける。" },
-            { type: "kun", reading: "ひと", sentence: "悪人と[等]しい。" }
-        ]
-    },
-    {
-        id: "194",
-        character: "薬",
-        readings: [
-            { type: "kun", reading: "くすり", sentence: "[薬]を飲む。" },
-            { type: "on", reading: "やく", sentence: "農[薬]を使う。" },
-            { type: "on", reading: "やっ", sentence: "[薬]局へ行く。" }
-        ]
-    },
-    {
-        id: "195",
-        character: "豆",
-        readings: [
-            { type: "kun", reading: "まめ", sentence: "[豆]まきをする。" },
-            { type: "on", reading: "とう", sentence: "納[豆]を食べる。" },
-            { type: "kun", reading: "ず", sentence: "小[豆]（あずき）。" }
-        ]
-    },
-    {
-        id: "196",
-        character: "度",
-        readings: [
-            { type: "on", reading: "ど", sentence: "温[度]を測る。" },
-            { type: "on", reading: "ど", sentence: "丁[度]よい。" },
-            { type: "on", reading: "たく", sentence: "支[度]をする。" }
-        ]
-    },
+
     {
         id: "197",
         character: "息",
@@ -1773,13 +1717,5 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
             { type: "on", reading: "むす", sentence: "[息]子と遊ぶ。" }
         ]
     },
-    {
-        id: "198",
-        character: "丁",
-        readings: [
-            { type: "on", reading: "ちょう", sentence: "[丁]寧に書く。" },
-            { type: "on", reading: "ちょう", sentence: "包[丁]を使う。" },
-            { type: "on", reading: "ちょう", sentence: "[丁]度（ちょうど）" }
-        ]
-    }
+
 ];

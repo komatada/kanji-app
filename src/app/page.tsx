@@ -61,6 +61,35 @@ export default function Home() {
     }, 1500); // 1.5 second delay
   };
 
+  const handleReport = async () => {
+    if (!currentQuestion) return;
+
+    try {
+      const response = await fetch("/api/report-error", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          questionId: currentQuestion.id,
+          sentence: currentQuestion.sentence,
+          currentReadings: currentQuestion.choices, // Assuming choices are readings
+          reportedAt: new Date().toISOString(),
+        }),
+      });
+
+      if (response.ok) {
+        alert("ほうこくしました！ありがとう！");
+      } else {
+        console.error("Failed to report");
+        alert("エラーが発生しました。");
+      }
+    } catch (error) {
+      console.error("Error reporting:", error);
+      alert("エラーが発生しました。");
+    }
+  };
+
   useEffect(() => {
     // Prevent scrolling on iPad
     document.body.style.overflow = 'hidden';
@@ -85,7 +114,9 @@ export default function Home() {
           gameTime={gameTime}
           onAnswer={handleAnswer}
           onEndGame={endGame}
+
           isProcessing={feedbackState.show}
+          onReport={handleReport}
         />
       )}
 
