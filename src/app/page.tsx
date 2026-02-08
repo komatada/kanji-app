@@ -19,6 +19,8 @@ export default function Home() {
     answerQuestion,
     nextQuestion,
     endGame,
+    reportedQuestions,
+    reportQuestion,
   } = useQuiz();
 
   const { playCorrect, playIncorrect, playClick } = useGameSound();
@@ -63,6 +65,9 @@ export default function Home() {
 
   const handleReport = async () => {
     if (!currentQuestion) return;
+
+    // Track reported question locally for Result Screen
+    reportQuestion(currentQuestion);
 
     try {
       const response = await fetch("/api/report-error", {
@@ -125,6 +130,7 @@ export default function Home() {
           gameTime={gameTime}
           total={totalQuestions}
           onRestart={handleRestart}
+          reportedQuestions={reportedQuestions}
         />
       )}
     </main>

@@ -3,10 +3,13 @@
 import { motion } from "framer-motion";
 import { Trophy, RefreshCcw, Clock } from "lucide-react";
 
+import { QuizQuestion } from "@/data/kanji_v2";
+
 interface ResultScreenProps {
     gameTime: number;
     total: number;
     onRestart: () => void;
+    reportedQuestions: QuizQuestion[];
 }
 
 function formatTime(seconds: number) {
@@ -15,10 +18,23 @@ function formatTime(seconds: number) {
     return `${m}分${s}秒`;
 }
 
-export function ResultScreen({ gameTime, total, onRestart }: ResultScreenProps) {
+export function ResultScreen({ gameTime, total, onRestart, reportedQuestions }: ResultScreenProps) {
     // Determine message based on time? Or simply congratulate.
     // Let's keep it simple.
     let message = "ゲームじかん ゲット！";
+
+    const handleCopyReports = async () => {
+        if (reportedQuestions.length === 0) return;
+
+        const reportText = JSON.stringify(reportedQuestions, null, 2);
+        try {
+            await navigator.clipboard.writeText(reportText);
+            alert("ほうこくを コピーしました！");
+        } catch (err) {
+            console.error('Failed to copy: ', err);
+            alert("コピーに しっぱいしました。");
+        }
+    };
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen p-4 text-center space-y-8">
@@ -35,6 +51,25 @@ export function ResultScreen({ gameTime, total, onRestart }: ResultScreenProps) 
                 <div className="text-6xl font-black text-orange-500 mb-8">
                     {formatTime(gameTime)}
                 </div>
+
+                {reportedQuestions.length > 0 && (
+                    <div className="mb-8 p-4 bg-red-50 rounded-xl border-2 border-red-100">
+                        <h3 className="text-xl font-bold text-red-500 mb-2">ほうこくした もんだい</h3>
+                        <div className="text-left text-sm text-gray-600 max-h-32 overflow-y-auto mb-4 bg-white p-2 rounded">
+                            {reportedQuestions.map(q => (
+                                <div key={q.id} className="border-b last:border-0 py-1">
+                                    ID: {q.id} / {q.sentence}
+                                </div>
+                            ))}
+                        </div>
+                        <button
+                            onClick={handleCopyReports}
+                            className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg shadow-sm transition-colors text-sm w-full"
+                        >
+                            まとめてコピー
+                        </button>
+                    </div>
+                )}
 
                 <motion.button
                     whileHover={{ scale: 1.05 }}

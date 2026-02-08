@@ -13,6 +13,16 @@ export function useQuiz() {
     const [gameTime, setGameTime] = useState(0); // Seconds
     const [history, setHistory] = useState<{ question: QuizQuestion; isCorrect: boolean }[]>([]);
 
+    const [reportedQuestions, setReportedQuestions] = useState<QuizQuestion[]>([]);
+
+    const reportQuestion = useCallback((question: QuizQuestion) => {
+        setReportedQuestions(prev => {
+            // Avoid duplicates
+            if (prev.some(q => q.id === question.id)) return prev;
+            return [...prev, question];
+        });
+    }, []);
+
     const startGame = useCallback(() => {
         // Use new generator
         const newQuestions = generateQuizQuestions(KANJI_DATA_V2, 10);
@@ -21,6 +31,7 @@ export function useQuiz() {
         setCurrentQuestionIndex(0);
         // setGameTime(0); // Keep accumulated time
         setHistory([]);
+        setReportedQuestions([]); // Reset reports on new game? Maybe keep them? Let's reset for now as it's per session.
         setGameState("PLAYING");
     }, []);
 
@@ -88,9 +99,11 @@ export function useQuiz() {
         totalQuestions: questions.length,
         gameTime,
         history,
+        reportedQuestions,
         startGame,
         answerQuestion,
         nextQuestion,
+        reportQuestion,
         endGame, // New function to manually finish the game
     };
 }
