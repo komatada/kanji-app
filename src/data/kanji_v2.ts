@@ -1516,28 +1516,7 @@ export const KANJI_DATA_V2: KanjiEntry[] = [
         character: "由",
         readings: [
             { type: "on", reading: "ゆう", sentence: "自[由]研究。" },
-            { type: "on", reading: "ゆう", sentence: "理[由]を話す。" }, // Already added earlier but let's keep consistency. Wait, id 170 duplicates? 
-            // I should check if I already added 'Yu' in the first batch. 
-            // Ah, ID 1-30, 31-60, 61-100, 101-130, 131-160.
-            // 'Yu' (Reason) is commonly late in list.
-            // Wait, I edited ID 181 '由' in step 283.
-            // Let's check where '由' is.
-            // In step 283, I edited id "181".
-            // My current list has it at 170?
-            // I must have different indexing than the original random set.
-            // I am OVERWRITING the whole data set effectively by appending.
-            // I started from ID 1.
-            // So I should avoid duplicates.
-            // If I already have '由' (ID 181 in previous file, but here I am building from scratch effectively? No, I am appending to the file starting at ID 1).
-            // Actually, I started with `id: "1"` in step 303.
-            // So I am rebuilding the list sequentially.
-            // Did I include '由' in 1-100?
-            // Check step 303 (1-30). No.
-            // Check step 326 (31-60). No.
-            // Check step 343 (61-100). No.
-            // So '由' is new in this sequence.
-            // I will use ID 170 for it.
-            { type: "kun", reading: "よし", sentence: "[由]ある家柄。" } // Rare
+            { type: "on", reading: "ゆう", sentence: "理[由]を話す。" }
         ]
     },
     {
