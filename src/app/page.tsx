@@ -22,6 +22,7 @@ export default function Home() {
     endGame,
     reportedQuestions,
     reportQuestion,
+    addTime,
   } = useQuiz();
 
   const { playCorrect, playIncorrect, playClick } = useGameSound();
@@ -99,8 +100,15 @@ export default function Home() {
     }
   };
 
-  const handleNextWriting = () => {
-    playClick();
+  const handleWritingCorrect = () => {
+    playCorrect();
+    addTime(20);
+    nextQuestion();
+  };
+
+  const handleWritingIncorrect = () => {
+    playIncorrect();
+    addTime(-30);
     nextQuestion();
   };
 
@@ -139,7 +147,8 @@ export default function Home() {
           question={currentQuestion}
           currentNumber={currentQuestionIndex + 1}
           gameTime={gameTime}
-          onNext={handleNextWriting}
+          onCorrect={handleWritingCorrect}
+          onIncorrect={handleWritingIncorrect}
           onEndGame={endGame}
         />
       )}

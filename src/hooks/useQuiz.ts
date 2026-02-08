@@ -23,6 +23,10 @@ export function useQuiz() {
         });
     }, []);
 
+    const addTime = useCallback((seconds: number) => {
+        setGameTime(prev => Math.max(0, prev + seconds));
+    }, []);
+
     const startGame = useCallback(() => {
         // Use new generator
         const newQuestions = generateQuizQuestions(KANJI_DATA_V2, 10);
@@ -104,6 +108,7 @@ export function useQuiz() {
         answerQuestion,
         nextQuestion,
         reportQuestion,
+        addTime,
         endGame, // New function to manually finish the game
     };
 }

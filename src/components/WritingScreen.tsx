@@ -8,7 +8,8 @@ interface WritingScreenProps {
     question: QuizQuestion;
     currentNumber: number;
     gameTime: number;
-    onNext: () => void;
+    onCorrect: () => void;
+    onIncorrect: () => void;
     onEndGame: () => void;
 }
 
@@ -22,7 +23,8 @@ export function WritingScreen({
     question,
     currentNumber,
     gameTime,
-    onNext,
+    onCorrect,
+    onIncorrect,
     onEndGame,
 }: WritingScreenProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -128,12 +130,8 @@ export function WritingScreen({
         lastPos.current = null;
     };
 
-    const handleShowAnswer = () => {
-        setShowAnswer(true);
-    };
-
-    const handleNext = () => {
-        onNext();
+    const handleToggleAnswer = () => {
+        setShowAnswer(!showAnswer);
     };
 
     return (
@@ -190,14 +188,14 @@ export function WritingScreen({
                     />
                     {showAnswer && (
                         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                            <span className="text-[120px] text-gray-300 font-bold opacity-50">
+                            <span className="text-[120px] text-red-400 font-bold opacity-70">
                                 {getTargetKanji()}
                             </span>
                         </div>
                     )}
                 </div>
 
-                {/* Buttons */}
+                {/* Action Buttons */}
                 <div className="flex space-x-4 w-full max-w-md">
                     <button
                         onClick={clearCanvas}
@@ -206,20 +204,29 @@ export function WritingScreen({
                         けす
                     </button>
                     <button
-                        onClick={handleShowAnswer}
-                        disabled={showAnswer}
+                        onClick={handleToggleAnswer}
                         className={`flex-1 py-4 text-white text-xl font-bold rounded-2xl shadow-md transition-colors ${showAnswer
-                                ? "bg-green-300 cursor-not-allowed"
+                                ? "bg-yellow-500 hover:bg-yellow-600"
                                 : "bg-green-500 hover:bg-green-600"
                             }`}
                     >
-                        こたえ
+                        {showAnswer ? "かくす" : "こたえ"}
+                    </button>
+                </div>
+
+                {/* Grading Buttons */}
+                <div className="flex space-x-4 w-full max-w-md">
+                    <button
+                        onClick={onIncorrect}
+                        className="flex-1 py-5 bg-red-500 hover:bg-red-600 text-white text-2xl font-bold rounded-2xl shadow-md transition-colors"
+                    >
+                        ✕ ふせいかい
                     </button>
                     <button
-                        onClick={handleNext}
-                        className="flex-1 py-4 bg-sky-500 hover:bg-sky-600 text-white text-xl font-bold rounded-2xl shadow-md transition-colors"
+                        onClick={onCorrect}
+                        className="flex-1 py-5 bg-sky-500 hover:bg-sky-600 text-white text-2xl font-bold rounded-2xl shadow-md transition-colors"
                     >
-                        つぎへ
+                        ○ せいかい
                     </button>
                 </div>
             </div>
