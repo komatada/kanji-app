@@ -18,21 +18,30 @@ export async function POST(req: NextRequest) {
             reportedAt: reportedAt || new Date().toISOString(),
         };
 
-        const dataFilePath = path.join(process.cwd(), "src", "data", "reported_errors.json");
+        // Log to console for Vercel/Production environments where filesystem is read-only
+        console.log("--- ERROR REPORT RECEIVED ---");
+        console.log(JSON.stringify(report, null, 2));
+        console.log("-----------------------------");
 
-        let reports = [];
         try {
-            const content = await fs.readFile(dataFilePath, "utf-8");
-            reports = JSON.parse(content);
-        } catch (error) {
-            // If file doesn't exist or is empty, start with empty array
+            const dataFilePath = path.join(process.cwd(), "src", "data", "reported_errors.json");
+            let reports = [];
+            try {
+                const content = await fs.readFile(dataFilePath, "utf-8");
+                reports = JSON.parse(content);
+            } catch (error) {
+                // If file doesn't exist or is empty, start with empty array
+            }
+
+            reports.push(report);
+
+            await fs.writeFile(dataFilePath, JSON.stringify(reports, null, 2), "utf-8");
+        } catch (fsError) {
+            console.warn("Could not save to file (likely read-only environment):", fsError);
+            // We still return success because we logged it to console
         }
 
-        reports.push(report);
-
-        await fs.writeFile(dataFilePath, JSON.stringify(reports, null, 2), "utf-8");
-
-        return NextResponse.json({ success: true, message: "Report saved" });
+        return NextResponse.json({ success: true, message: "Report processed" });
 
     } catch (error: any) {
         console.error("Report failed:", error);
