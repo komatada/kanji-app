@@ -217,13 +217,13 @@ export function WritingScreen({
                 {/* Grading Buttons */}
                 <div className="flex space-x-4 w-full max-w-md">
                     <button
-                        onClick={onIncorrect}
+                        onClick={() => { setShowAnswer(false); onIncorrect(); }}
                         className="flex-1 py-5 bg-red-500 hover:bg-red-600 text-white text-2xl font-bold rounded-2xl shadow-md transition-colors"
                     >
                         ✕ ふせいかい
                     </button>
                     <button
-                        onClick={onCorrect}
+                        onClick={() => { setShowAnswer(false); onCorrect(); }}
                         className="flex-1 py-5 bg-sky-500 hover:bg-sky-600 text-white text-2xl font-bold rounded-2xl shadow-md transition-colors"
                     >
                         ○ せいかい
